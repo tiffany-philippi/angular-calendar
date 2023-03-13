@@ -1,0 +1,53 @@
+<div class="calendar">
+  <div class="calendar-header">
+    <h2 class="calendar-header__text">
+      {{ today | date : "MMMM yyyy" }}
+    </h2>
+    <div>
+      <button class="calendar-header__button" (click)="changeMonth(-1)">
+        <span class="material-symbols-outlined"> chevron_left </span>
+      </button>
+      <button class="calendar-header__button" (click)="changeMonth(+1)">
+        <span class="material-symbols-outlined"> chevron_right </span>
+      </button>
+    </div>
+  </div>
+  <div class="calendar-week">
+    <div class="calendar-week__header">
+      <ng-container *ngFor="let day of calendar; let i = index">
+        <div *ngIf="i < 7">
+          <p>{{ daysOfWeek[i] }}</p>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="calendar-week__days">
+      <div
+        *ngFor="let day of calendar; let i = index"
+        class="calendar-week__day"
+        [class.calendar-week__next-line]="i % 7 === 0"
+        [class.calendar-week__other-month]="today.getMonth() !== day.getMonth()"
+        [class.calendar-week__today]="
+          day.getDate() == today.getDate() &&
+          !(today.getMonth() !== currentMonth)
+        "
+        [class.calendar-week__day-before-today]="
+          day.getDate() < today.getDate() &&
+          !(today.getMonth() !== day.getMonth()) &&
+          !(today.getMonth() !== currentMonth)
+        "
+      >
+        <span>
+          {{ day | date : "dd" }}
+        </span>
+
+        <div class="reminders">
+          <app-reminders
+            [dateReminder]="day"
+            [reminders]="reminders"
+          ></app-reminders>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

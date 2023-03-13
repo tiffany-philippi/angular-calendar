@@ -1,0 +1,54 @@
+@import "/src/assets/variables.scss";
+
+.reminderDialog {
+  &-form {
+    div {
+      display: flex;
+    }
+  }
+  &-fillContainer {
+    .reminderDialog-form {
+      &__field {
+        width: calc(100% - 79px);
+        margin: 4px 16px 4px 0;
+      }
+      &__color {
+        background-color: transparent;
+        border: none;
+        height: 63px;
+        width: 63px;
+      }
+    }
+  }
+  &-divideContainer {
+    justify-content: space-between;
+    mat-form-field {
+      width: calc(50% - 8px);
+    }
+  }
+  &-buttons {
+    display: flex;
+    justify-content: space-between;
+    border-top: $border;
+    padding: $space-default;
+    button {
+      background-color: $primary-color;
+      border: $border;
+      padding: 8px $space-default;
+      border-radius: 4px;
+
+      &.reminderDialog-buttons {
+        &__delete {
+          background-color: $danger-color;
+        }
+        &__close {
+          margin-right: $space-default;
+          background-color: $primary-lighter;
+        }
+      }
+    }
+    div {
+      display: flex;
+    }
+  }
+}

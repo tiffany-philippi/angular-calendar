@@ -1,0 +1,35 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+* {
+  font-size: 14px;
+  color: #353131;
+  font-family: "Ubuntu", sans-serif;
+  box-sizing: border-box;
+  --webkit-font-smoothing: antialiased;
+  --moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+  margin: 8px 0;
+}
+
+p {
+  margin: 0;
+}
+
+.spacer {
+  flex: 1;
+}
+.padding {
+  padding: 0 16px;
+}
+
+.content {
+  margin: 82px auto 32px;
+}

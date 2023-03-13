@@ -1,0 +1,37 @@
+@import "/src/assets/variables.scss";
+
+.remindersContainer {
+  .reminder {
+    margin: 4px 0;
+    border-radius: 4px;
+    width: 100%;
+    min-height: 16px;
+    padding: 4px;
+    border: none;
+    &-item {
+      cursor: pointer;
+      span:first-child {
+        font-size: $font-small;
+        margin-right: 4px;
+      }
+    }
+
+    &-add {
+      cursor: pointer;
+      background-color: transparent;
+      &:hover {
+        cursor: pointer;
+        background-color: $secondary-color;
+        opacity: 0.6;
+        .material-symbols-outlined {
+          display: block;
+        }
+      }
+      .material-symbols-outlined {
+        font-size: 14px;
+        display: none;
+        text-align: center;
+      }
+    }
+  }
+}

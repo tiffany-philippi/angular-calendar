@@ -1,0 +1,24 @@
+$primary-color: #9ce3c8;
+$primary-lighter: #e6f8f1;
+$primary-light: #c3eedd;
+$primary-medium-color: #005765;
+$primary-strong-color: #00714d;
+$secondary-color: #9cb7e3;
+$hover-color: #e8eef8;
+$border-color: #ccc;
+$inactive-color: #aaa;
+$danger-color: #db595d;
+
+$border: 1px solid $border-color;
+
+$space-default: 16px;
+$space-medium: 8px;
+
+$font-large: 18px;
+$font-medium: 16px;
+$font-default: 14px;
+$font-small: 12px;
+
+@mixin paddingCircle($size) {
+  padding: $size calc($size + 1px);
+}

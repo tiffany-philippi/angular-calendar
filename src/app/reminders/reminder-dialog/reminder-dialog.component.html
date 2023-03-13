@@ -1,0 +1,70 @@
+<div class="reminderDialog">
+  <h1 mat-dialog-title>Reminder</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="reminderForm" class="reminderDialog reminderDialog-form">
+      <div class="reminderDialog-fillContainer">
+        <mat-form-field class="reminderDialog-form__field" appearance="outline">
+          <mat-label>Reminder</mat-label>
+          <input
+            matInput
+            formControlName="description"
+            placeholder="Type your reminder"
+          />
+        </mat-form-field>
+
+        <input
+          class="reminderDialog-form__color"
+          type="color"
+          formControlName="color"
+        />
+      </div>
+      <div class="reminderDialog-divideContainer">
+        <mat-form-field class="reminderDialog-form__field" appearance="outline">
+          <mat-label>Date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="date" />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="reminderDialog-form__field" appearance="outline">
+          <mat-label>Time</mat-label>
+          <input
+            matInput
+            type="time"
+            min="00:00"
+            max="23:59"
+            formControlName="time"
+          />
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+  <div mat-dialog-actions class="reminderDialog-buttons">
+    <button
+      mat-button
+      class="reminderDialog-buttons__delete"
+      [mat-dialog-close]="delete(reminderForm.value.id)"
+    >
+      Delete
+    </button>
+    <div>
+      <button
+        class="reminderDialog-buttons__close"
+        mat-button
+        (click)="close()"
+      >
+        Back
+      </button>
+      <button
+        class="reminderDialog-buttons__action"
+        mat-button
+        [mat-dialog-close]="reminderForm.value"
+      >
+        Create
+      </button>
+    </div>
+  </div>
+</div>

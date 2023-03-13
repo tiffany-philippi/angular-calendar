@@ -1,0 +1,78 @@
+@import "/src/assets/variables.scss";
+
+.calendar {
+  border: $border;
+  border-radius: $space-medium;
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $space-default;
+    padding: $space-medium $space-default 0;
+    &__button {
+      cursor: pointer;
+      border: none;
+      background-color: $primary-lighter;
+      border-radius: 100%;
+      @include paddingCircle(2px);
+      margin-left: $space-default;
+      &:hover {
+        background-color: $primary-light;
+      }
+    }
+    &__text {
+      color: $primary-strong-color;
+      font-weight: 600;
+      font-size: $font-large;
+    }
+  }
+
+  &-week {
+    &__header,
+    &__days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+    }
+    &__header {
+      text-align: center;
+      div {
+        font-size: $space-default;
+        padding: $space-medium $space-default;
+      }
+    }
+    &__day {
+      text-align: right;
+      border-top: $border;
+      border-left: $border;
+      height: 140px;
+      padding: $space-medium;
+      overflow: auto;
+      &:hover {
+        background-color: $hover-color;
+      }
+      span {
+        @include paddingCircle(4px);
+        border-radius: 50px;
+      }
+      .reminders {
+        width: 100%;
+        margin-top: $space-medium;
+        text-align: left;
+      }
+    }
+    &__other-month {
+      span {
+        color: $inactive-color;
+      }
+    }
+    &__next-line {
+      border-left: none;
+    }
+    &__today span {
+      background-color: $primary-color;
+    }
+    &__day-before-today span {
+      color: $primary-medium-color;
+    }
+  }
+}
