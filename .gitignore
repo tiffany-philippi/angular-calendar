@@ -1,8 +1,3 @@
 /node_modules/
 /.angular
 *.conf
-
-#IDE
-tsconfig.json
-tsconfig.spec.json
-tsconfig.app.json
