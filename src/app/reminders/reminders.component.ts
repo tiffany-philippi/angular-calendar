@@ -45,9 +45,8 @@ export class Reminders implements OnInit {
           this.reminders.push(response);
           this.orderList();
         }
+        this.setReminder(this.reminders);
       }
-
-      this.setReminder(this.reminders);
     });
   }
 
@@ -66,7 +65,7 @@ export class Reminders implements OnInit {
 
   orderList() {
     this.reminders?.sort(function (a, b) {
-      return a.time.localeCompare(b.time);
+      return a.time?.localeCompare(b.time);
     });
   }
 

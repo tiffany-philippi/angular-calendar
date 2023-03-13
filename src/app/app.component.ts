@@ -29,12 +29,13 @@ export class AppComponent implements OnInit {
   }
 
   getReminders() {
-    this.localStorage.get("reminders").subscribe((r) => {
-      if (r !== null) {
-        this.reminders = r;
+    this.localStorage.get("reminders").subscribe((response) => {
+      if (response !== null) {
+        this.reminders = response;
         this.orderList();
       } else {
         this.setReminder(this.item);
+        this.reminders = this.reminders.length > 0 ? this.reminders : this.item;
       }
     });
   }

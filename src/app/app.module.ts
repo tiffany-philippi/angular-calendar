@@ -11,7 +11,6 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { CalendarComponent } from "./calendar/calendar.component";
-import { TodayEventComponent } from "./calendar/today-event/today-event.component";
 import { Reminders } from "./reminders/reminders.component";
 import { ReminderDialogComponent } from "./reminders/reminder-dialog/reminder-dialog.component";
 
@@ -19,7 +18,6 @@ import { ReminderDialogComponent } from "./reminders/reminder-dialog/reminder-di
   declarations: [
     AppComponent,
     CalendarComponent,
-    TodayEventComponent,
     Reminders,
     ReminderDialogComponent,
   ],

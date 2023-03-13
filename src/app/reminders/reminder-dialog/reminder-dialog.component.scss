@@ -10,7 +10,7 @@
     .reminderDialog-form {
       &__field {
         width: calc(100% - 79px);
-        margin: 4px 16px 4px 0;
+        margin: 4px $space-default 4px 0;
       }
       &__color {
         background-color: transparent;
@@ -23,7 +23,7 @@
   &-divideContainer {
     justify-content: space-between;
     mat-form-field {
-      width: calc(50% - 8px);
+      width: calc(50% - $space-medium);
     }
   }
   &-buttons {
@@ -32,14 +32,19 @@
     border-top: $border;
     padding: $space-default;
     button {
+      cursor: pointer;
       background-color: $primary-color;
       border: $border;
-      padding: 8px $space-default;
+      padding: $space-medium $space-default;
       border-radius: 4px;
+      &:hover {
+        opacity: 0.8;
+      }
 
       &.reminderDialog-buttons {
         &__delete {
           background-color: $danger-color;
+          color: white;
         }
         &__close {
           margin-right: $space-default;
@@ -51,4 +56,7 @@
       display: flex;
     }
   }
+}
+.space {
+  flex: 1;
 }

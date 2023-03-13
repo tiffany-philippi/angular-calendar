@@ -26,7 +26,7 @@ export class ReminderDialogComponent {
 
   ngOnInit(): void {
     this.reminderForm = this.fb.group({
-      id: [this.reminder?.id ?? uuid.v4()],
+      id: this.reminder?.id ?? uuid.v4(),
       description: [this.reminder?.description],
       color: [this.reminder?.color || "#9cb7e3"],
       date: [this.reminder?.date || this.data.date],
@@ -38,5 +38,8 @@ export class ReminderDialogComponent {
   }
   close(): void {
     this.dialogRef.close();
+  }
+  disabled() {
+    return !this.reminder;
   }
 }
