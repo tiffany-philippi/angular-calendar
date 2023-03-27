@@ -1,7 +1,7 @@
 <div class="remindersContainer">
   <ng-container *ngFor="let item of reminders">
     <div
-      *ngIf="reminderOnDate(item)"
+      *ngIf="rService.reminderOnDate(item, dateReminder)"
       class="remindersContainer reminder reminder-item"
       [style]="{ backgroundColor: item.color }"
       (click)="openDialog(item)"

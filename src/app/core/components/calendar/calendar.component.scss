@@ -71,8 +71,13 @@
     &__today span {
       background-color: $primary-color;
     }
-    &__day-before-today span {
-      color: $primary-medium-color;
+    &__day-before-today {
+      .reminders {
+        opacity: 0.4;
+      }
+      span {
+        color: $primary-medium-color;
+      }
     }
   }
 }

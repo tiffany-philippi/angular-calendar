@@ -10,6 +10,9 @@
             formControlName="description"
             placeholder="Type your reminder"
           />
+          <mat-hint *ngIf="message" class="reminderDialog-form__hint"
+            >You must input a description.</mat-hint
+          >
         </mat-form-field>
 
         <input
@@ -48,7 +51,7 @@
       mat-button
       class="reminderDialog-buttons__delete"
       *ngIf="reminder"
-      [mat-dialog-close]="delete(reminderForm.value.id)"
+      (click)="delete(reminderForm.value.id)"
     >
       Delete
     </button>
@@ -64,9 +67,9 @@
       <button
         class="reminderDialog-buttons__action"
         mat-button
-        [mat-dialog-close]="reminderForm.value"
+        (click)="submit()"
       >
-        Create
+        {{ reminder && reminder.id ? "Edit" : "Create" }}
       </button>
     </div>
   </div>

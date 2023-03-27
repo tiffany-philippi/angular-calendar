@@ -10,9 +10,10 @@ import { MatNativeDateModule } from "@angular/material/core";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { CalendarComponent } from "./calendar/calendar.component";
-import { Reminders } from "./reminders/reminders.component";
-import { ReminderDialogComponent } from "./reminders/reminder-dialog/reminder-dialog.component";
+import { CalendarComponent } from "./core/components/calendar/calendar.component";
+import { Reminders } from "./core/components/reminders/reminders.component";
+import { ReminderDialogComponent } from "./core/components/reminders/reminder-dialog/reminder-dialog.component";
+import { NextEventComponent } from "./core/components/next-event/next-event.component";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ReminderDialogComponent } from "./reminders/reminder-dialog/reminder-di
     CalendarComponent,
     Reminders,
     ReminderDialogComponent,
+    NextEventComponent,
   ],
   imports: [
     BrowserModule,

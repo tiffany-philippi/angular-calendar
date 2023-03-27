@@ -29,7 +29,7 @@
         [class.calendar-week__other-month]="today.getMonth() !== day.getMonth()"
         [class.calendar-week__today]="
           day.getDate() == today.getDate() &&
-          !(today.getMonth() !== currentMonth)
+          !(today.getMonth() !== day.getMonth())
         "
         [class.calendar-week__day-before-today]="
           day.getDate() < today.getDate() &&

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { ReminderType } from "src/models/Reminder";
-import { LocalStorageService } from "./local-storage.service";
+import { ReminderType } from "src/app/shared/models/Reminder";
+import { RemindersService } from "./shared/services/reminders/reminders.service";
 
 @Component({
   selector: "app-root",
@@ -13,40 +13,9 @@ export class AppComponent implements OnInit {
   minutes: string = String(new Date().getMinutes()).padStart(2, "0");
 
   reminders: ReminderType[] = [];
-  item: ReminderType[] = [
-    {
-      id: "0",
-      description: "Evaluate Tiffany's test",
-      color: "#e39cb7",
-      date: new Date(),
-      time: `${this.hour}:${this.minutes}`,
-    },
-  ];
-  constructor(private localStorage: LocalStorageService) {}
+  constructor(public rService: RemindersService) {}
 
   ngOnInit(): void {
-    this.getReminders();
-  }
-
-  getReminders() {
-    this.localStorage.get("reminders").subscribe((response) => {
-      if (response !== null) {
-        this.reminders = response;
-        this.orderList();
-      } else {
-        this.setReminder(this.item);
-        this.reminders = this.reminders.length > 0 ? this.reminders : this.item;
-      }
-    });
-  }
-
-  orderList() {
-    this.reminders?.sort(function (a, b) {
-      return a.time.localeCompare(b.time);
-    });
-  }
-
-  setReminder(list: ReminderType[]): void {
-    this.localStorage.set("reminders", list);
+    this.reminders = this.rService.getReminders();
   }
 }
