@@ -18,6 +18,10 @@
         height: 63px;
         width: 63px;
       }
+      &__hint {
+        font-size: $font-small;
+        color: $danger-color;
+      }
     }
   }
   &-divideContainer {

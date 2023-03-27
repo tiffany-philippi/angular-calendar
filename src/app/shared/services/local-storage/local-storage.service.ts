@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
-import { ReminderType } from "src/models/Reminder";
+import { ReminderType } from "src/app/shared/models/Reminder";
 
 @Injectable({
   providedIn: "root",

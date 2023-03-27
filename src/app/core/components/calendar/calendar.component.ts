@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { ReminderType } from "src/models/Reminder";
-import { Reminders } from "../reminders/reminders.component";
+import { ReminderType } from "src/app/shared/models/Reminder";
+import { Reminders } from "src/app/core/components/reminders/reminders.component";
 
 @Component({
   selector: "app-calendar",
