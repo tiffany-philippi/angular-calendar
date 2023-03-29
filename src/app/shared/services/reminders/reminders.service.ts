@@ -7,6 +7,16 @@ import { LocalStorageService } from "../local-storage/local-storage.service";
 })
 export class RemindersService {
   reminders: ReminderType[] = [];
+  item: ReminderType[] = [
+    {
+      id: "0",
+      description: "Yoga Class",
+      date: new Date(),
+      time: "11:30",
+      color: "#EDF434",
+    },
+  ];
+
   constructor(private localStorage: LocalStorageService) {}
 
   edit(key: string, reminder: ReminderType) {
@@ -29,8 +39,10 @@ export class RemindersService {
 
   getReminders(): ReminderType[] {
     this.localStorage.get("reminders").subscribe((response) => {
-      this.reminders = response;
-      this.orderList();
+      if (response !== null) {
+        this.reminders = response;
+        this.orderList();
+      } else this.setReminder([]);
     });
     return this.reminders;
   }
