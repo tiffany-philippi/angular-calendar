@@ -1,5 +1,8 @@
 import { Injectable } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
+import { ReminderDialogComponent } from "src/app/core/components/reminders/reminder-dialog/reminder-dialog.component";
 import { ReminderType } from "src/app/shared/models/Reminder";
+import { REMINDERS_KEY } from "../../constants";
 import { LocalStorageService } from "../local-storage/local-storage.service";
 
 @Injectable({
@@ -7,17 +10,11 @@ import { LocalStorageService } from "../local-storage/local-storage.service";
 })
 export class RemindersService {
   reminders: ReminderType[] = [];
-  item: ReminderType[] = [
-    {
-      id: "0",
-      description: "Yoga Class",
-      date: new Date(),
-      time: "11:30",
-      color: "#EDF434",
-    },
-  ];
 
-  constructor(private localStorage: LocalStorageService) {}
+  constructor(
+    public dialog: MatDialog,
+    private localStorage: LocalStorageService
+  ) {}
 
   edit(key: string, reminder: ReminderType) {
     const index = this.reminders.findIndex((v) => v.id === key);
@@ -38,7 +35,7 @@ export class RemindersService {
   }
 
   getReminders(): ReminderType[] {
-    this.localStorage.get("reminders").subscribe((response) => {
+    this.localStorage.get(REMINDERS_KEY).subscribe((response) => {
       if (response !== null) {
         this.reminders = response;
         this.orderList();
@@ -48,7 +45,17 @@ export class RemindersService {
   }
 
   setReminder(list: ReminderType[]): void {
-    this.localStorage.set("reminders", list);
+    this.localStorage.set(REMINDERS_KEY, list);
+  }
+
+  openDialog(dateReminder: Date, reminder?: ReminderType) {
+    this.dialog.open(ReminderDialogComponent, {
+      data: {
+        date: dateReminder,
+        reminder: reminder,
+      },
+      disableClose: true,
+    });
   }
 
   orderList() {
@@ -62,13 +69,10 @@ export class RemindersService {
     const month = new Date(reminder.date).getMonth();
     const year = new Date(reminder.date).getFullYear();
 
-    if (
+    return (
       dateReminder.getDate() == date &&
       dateReminder.getMonth() == month &&
       dateReminder.getFullYear() == year
-    )
-      return true;
-
-    return false;
+    );
   }
 }

@@ -1,1 +1,38 @@
-<p>next-event works!</p>
+<div class="card nextEvent">
+  <div class="bg">
+    <div *ngIf="showDiv()" class="nextEvent__content">
+      <div class="d-flex">
+        <div
+          class="nextEvent__content--title padding"
+          [style]="{ borderColor: details.color }"
+        >
+          <h1>{{ details.description }}</h1>
+        </div>
+        <button
+          mat-raised-button
+          extended
+          (click)="rService.openDialog(details.date, details)"
+        >
+          <mat-icon>edit</mat-icon>
+          Edit event
+        </button>
+      </div>
+      <div class="nextEvent__content--details">
+        <strong>Details:</strong>
+        <span class="d-flex nextEvent__content--info">
+          <mat-icon>schedule</mat-icon>
+          <p>{{ details.date | date : "d MMMM yyyy" }} at {{ details.time }}</p>
+        </span>
+        <!-- <span class="d-flex nextEvent__content--info">
+          <mat-icon>pin_drop</mat-icon>
+          <p>R. Varginha, 104, São José da Barra - MG, 37945-000</p>
+        </span> -->
+      </div>
+    </div>
+    <div *ngIf="!details">
+      <div class="nextEvent__content--empty padding">
+        <h1>Select a reminder to see the details.</h1>
+      </div>
+    </div>
+  </div>
+</div>

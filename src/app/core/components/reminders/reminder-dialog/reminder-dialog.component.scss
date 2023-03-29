@@ -37,7 +37,6 @@
     padding: $space-default;
     button {
       cursor: pointer;
-      background-color: $primary-color;
       border: $border;
       padding: $space-medium $space-default;
       border-radius: 4px;
@@ -48,11 +47,16 @@
       &.reminderDialog-buttons {
         &__delete {
           background-color: $danger-color;
-          color: white;
+          ::ng-deep span {
+            color: white;
+          }
         }
         &__close {
-          margin-right: $space-default;
-          background-color: $primary-lighter;
+          margin-right: $space-medium;
+        }
+        &__action {
+          background-color: $primary-color;
+          font-weight: 500;
         }
       }
     }

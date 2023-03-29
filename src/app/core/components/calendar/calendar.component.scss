@@ -1,8 +1,6 @@
 @import "/src/assets/variables.scss";
 
 .calendar {
-  border: $border;
-  border-radius: $space-medium;
   &-header {
     display: flex;
     align-items: center;

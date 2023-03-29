@@ -1,0 +1,40 @@
+@import "../../../../assets/variables.scss";
+.nextEvent {
+  margin-bottom: $space-default;
+  .bg {
+    background-image: linear-gradient(to left bottom, transparent 0%, #fff 60%),
+      url($image);
+    width: 100%;
+    border-radius: $space-medium;
+  }
+  &__content {
+    padding: $space-large;
+    position: relative;
+    &--title {
+      border-left: 4px solid;
+      flex: 1;
+      margin-bottom: $space-large;
+      h1 {
+        font-size: $font-title;
+        margin: 0;
+      }
+    }
+    &--info {
+      align-items: start;
+      margin-top: $space-medium;
+      mat-icon {
+        font-size: 18px;
+      }
+    }
+    &--empty {
+      padding: $space-large;
+    }
+    button {
+      box-shadow: none;
+      border: $border;
+    }
+  }
+  &__details {
+    padding: $space-default;
+  }
+}
