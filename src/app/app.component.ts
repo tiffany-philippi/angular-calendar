@@ -9,10 +9,9 @@ import { RemindersService } from "./shared/services/reminders/reminders.service"
 })
 export class AppComponent implements OnInit {
   title = "Welcome! Let's check your schedule.";
-  hour: string = String(new Date().getHours()).padStart(2, "0");
-  minutes: string = String(new Date().getMinutes()).padStart(2, "0");
 
   reminders: ReminderType[] = [];
+
   constructor(public rService: RemindersService) {}
 
   ngOnInit(): void {
