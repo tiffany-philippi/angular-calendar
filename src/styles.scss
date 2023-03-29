@@ -28,6 +28,16 @@ p {
   padding: 0 $space-default;
 }
 
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+
 .content {
   margin: 82px auto 32px;
+  max-width: 90%;
+}
+.card {
+  border: $border;
+  border-radius: $space-medium;
 }

@@ -1,1 +1,30 @@
-<p>next-event works!</p>
+<div class="card nextEvent">
+  <div class="bg">
+    <div class="nextEvent__content">
+      <div class="d-flex">
+        <div
+          class="nextEvent__content--title padding"
+          style="border-color: #b63939"
+        >
+          <!-- <p>It doesn't repeat.</p> -->
+          <h1>Event name</h1>
+        </div>
+        <button mat-raised-button extended>
+          <mat-icon>edit</mat-icon>
+          Edit event
+        </button>
+      </div>
+      <div class="nextEvent__content--details">
+        <strong>Details:</strong>
+        <span class="d-flex nextEvent__content--info">
+          <mat-icon>schedule</mat-icon>
+          <p>21:30 - 22:00</p>
+        </span>
+        <span class="d-flex nextEvent__content--info">
+          <mat-icon>pin_drop</mat-icon>
+          <p>R. Varginha, 104, São José da Barra - MG, 37945-000</p>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

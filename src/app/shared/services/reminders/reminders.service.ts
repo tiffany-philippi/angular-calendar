@@ -7,15 +7,6 @@ import { LocalStorageService } from "../local-storage/local-storage.service";
 })
 export class RemindersService {
   reminders: ReminderType[] = [];
-  item: ReminderType[] = [
-    {
-      id: "0",
-      description: "Yoga Class",
-      date: new Date(),
-      time: "11:30",
-      color: "#EDF434",
-    },
-  ];
 
   constructor(private localStorage: LocalStorageService) {}
 
@@ -62,13 +53,10 @@ export class RemindersService {
     const month = new Date(reminder.date).getMonth();
     const year = new Date(reminder.date).getFullYear();
 
-    if (
+    return (
       dateReminder.getDate() == date &&
       dateReminder.getMonth() == month &&
       dateReminder.getFullYear() == year
-    )
-      return true;
-
-    return false;
+    );
   }
 }

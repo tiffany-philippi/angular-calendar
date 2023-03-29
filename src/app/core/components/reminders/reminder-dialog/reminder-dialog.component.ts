@@ -20,7 +20,6 @@ export class ReminderDialogComponent {
   reminder: ReminderType;
   hour: String = String(new Date().getHours()).padStart(2, "0");
   minutes: String = String(new Date().getMinutes()).padStart(2, "0");
-  message: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -51,7 +50,7 @@ export class ReminderDialogComponent {
     this.dialogRef.close();
   }
   submit() {
-    if (this.reminderForm.status === "INVALID") this.message = true;
+    if (this.reminderForm.status === "INVALID") return;
     else {
       const reminder = this.reminderForm.value;
 

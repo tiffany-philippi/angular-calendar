@@ -10,8 +10,22 @@
             formControlName="description"
             placeholder="Type your reminder"
           />
-          <mat-hint *ngIf="message" class="reminderDialog-form__hint"
-            >You must input a description.</mat-hint
+          <mat-hint
+            *ngIf="
+              reminderForm.controls.description.errors &&
+              reminderForm.controls.description.errors.required
+            "
+            class="reminderDialog-form__hint"
+            >This field is required.</mat-hint
+          >
+
+          <mat-hint
+            *ngIf="
+              reminderForm.controls.description.errors &&
+              reminderForm.controls.description.errors.maxlength
+            "
+            class="reminderDialog-form__hint"
+            >Only 30 characters allowed.</mat-hint
           >
         </mat-form-field>
 
@@ -52,6 +66,7 @@
       class="reminderDialog-buttons__delete"
       *ngIf="reminder"
       (click)="delete(reminderForm.value.id)"
+      color="warn"
     >
       Delete
     </button>
