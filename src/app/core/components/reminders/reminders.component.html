@@ -4,7 +4,7 @@
       *ngIf="rService.reminderOnDate(item, dateReminder)"
       class="remindersContainer reminder reminder-item"
       [style]="{ backgroundColor: item.color }"
-      (click)="openDialog(item)"
+      (click)="showDetails(item)"
     >
       <span>{{ item.time }}</span>
       <span>{{ item.description }}</span>

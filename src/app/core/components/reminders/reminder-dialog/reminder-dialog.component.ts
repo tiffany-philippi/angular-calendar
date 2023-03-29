@@ -1,14 +1,10 @@
-import { Component, Inject, Input } from "@angular/core";
+import { Component, Inject } from "@angular/core";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import {
-  FormGroup,
-  FormControl,
-  FormBuilder,
-  Validators,
-} from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
 import { ReminderType } from "src/app/shared/models/Reminder";
 import * as uuid from "uuid";
 import { RemindersService } from "src/app/shared/services/reminders/reminders.service";
+import { DetailsService } from "src/app/shared/services/details/details.service";
 
 @Component({
   selector: "app-reminder-dialog",
@@ -25,6 +21,7 @@ export class ReminderDialogComponent {
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<ReminderDialogComponent>,
     public rService: RemindersService,
+    public dService: DetailsService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.reminder = this.data.reminder;
@@ -44,6 +41,7 @@ export class ReminderDialogComponent {
   }
   delete(id: string) {
     this.rService.delete(id);
+    this.dService.clear();
     this.close();
   }
   close(): void {
@@ -54,8 +52,10 @@ export class ReminderDialogComponent {
     else {
       const reminder = this.reminderForm.value;
 
-      if (this.reminder?.id) this.rService.edit(this.reminder.id, reminder);
-      else this.rService.create(reminder);
+      if (this.reminder?.id) {
+        this.rService.edit(this.reminder.id, reminder);
+        this.dService.setDetails([reminder]);
+      } else this.rService.create(reminder);
 
       this.close();
     }

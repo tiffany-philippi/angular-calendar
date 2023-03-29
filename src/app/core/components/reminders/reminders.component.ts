@@ -1,8 +1,7 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { MatDialog } from "@angular/material/dialog";
+import { Component, Input } from "@angular/core";
 import { ReminderType } from "src/app/shared/models/Reminder";
+import { DetailsService } from "src/app/shared/services/details/details.service";
 import { RemindersService } from "src/app/shared/services/reminders/reminders.service";
-import { ReminderDialogComponent } from "./reminder-dialog/reminder-dialog.component";
 
 @Component({
   selector: "app-reminders",
@@ -13,15 +12,16 @@ export class Reminders {
   @Input() dateReminder: Date = new Date();
   @Input() reminders: ReminderType[] = [];
 
-  constructor(public dialog: MatDialog, public rService: RemindersService) {}
+  constructor(
+    public rService: RemindersService,
+    public dService: DetailsService
+  ) {}
 
-  openDialog(reminder?: ReminderType) {
-    this.dialog.open(ReminderDialogComponent, {
-      data: {
-        date: this.dateReminder,
-        reminder: reminder,
-      },
-      disableClose: true,
-    });
+  openDialog() {
+    this.rService.openDialog(this.dateReminder);
+  }
+
+  showDetails(reminder: ReminderType) {
+    this.dService.setDetails([reminder]);
   }
 }
